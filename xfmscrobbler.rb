@@ -19,10 +19,6 @@ while count < artists.length
 	dt = times[count].gsub("100\">", "").scan(/[0-9:]+/)
 	scrobble = Scrobbler::Scrobble.new(:source => 'R', :session_id => auth.session_id, :submission_url => auth.submission_url, :artist => artists[count].gsub("\">","").gsub("<",""), :track => tracks[count].gsub("span>","").gsub("<",""), :album => '', :time => Time.parse(dt[1]), :length => '', :track_number => '')
 	scrobble.submit!
-	puts artists[count].gsub("\">","").gsub("<","")
-	puts tracks[count].gsub("span>","").gsub("<","")
-	puts Time.parse(dt[1])
-	#puts scrobble.status
 	count += 1
 
 end
